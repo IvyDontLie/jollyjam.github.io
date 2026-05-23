@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jolly Jam</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+   CUSTOM FONT
+========================= */
+
+@font-face{
+    font-family:"Brass Mono";
+    src:url("./BrassMono-Regular.ttf") format("truetype");
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#071018;
+
+    color:#f5f5f5;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    width:100%;
+
+    padding:25px 8%;
+
+    display:flex;
+    justify-content:center;
+    gap:40px;
+
+    position:fixed;
+    top:0;
+
+    backdrop-filter:blur(10px);
+
+    background:rgba(5,15,25,0.82);
+
+    border-bottom:1px solid #163042;
+
+    z-index:1000;
+}
+
+nav a{
+    text-decoration:none;
+
+    color:#f5f5f5;
+
+    letter-spacing:2px;
+
+    transition:0.2s;
+
+    font-size:0.95rem;
+}
+
+nav a:hover{
+    opacity:0.7;
+    color:#7cc7ff;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:140px 20px 60px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+    font-family:"Brass Mono", monospace;
+
+    font-size:clamp(3rem, 10vw, 6rem);
+
+    letter-spacing:6px;
+
+    color:#f5f5f5;
+
+    text-shadow:
+    0 0 10px rgba(90,170,255,0.25),
+    0 0 30px rgba(90,170,255,0.12);
+
+    margin-bottom:35px;
+
+    line-height:1;
+
+    font-weight:100;
+
+    transform:scaleY(0.95);
+}
+
+/* =========================
+   TAGLINE
+========================= */
+
+.tagline{
+    max-width:720px;
+
+    font-size:1.15rem;
+
+    line-height:1.9;
+
+    color:#c7d6e2;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider{
+    width:80%;
+    height:1px;
+
+    background:#163042;
+
+    margin:30px auto;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:90px 10%;
+}
+
+.section-title{
+    font-size:2.4rem;
+
+    margin-bottom:45px;
+
+    text-align:center;
+
+    font-weight:300;
+
+    letter-spacing:4px;
+}
+
+/* =========================
+   FLAVOR CARDS
+========================= */
+
+.flavors{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+}
+
+.card{
+    border:1px solid #163042;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    background:#0d1a24;
+
+    transition:0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+
+    border-color:#3f88c5;
+
+    box-shadow:
+    0 0 20px rgba(63,136,197,0.15);
+}
+
+.card h3{
+    margin-bottom:18px;
+
+    font-size:1.5rem;
+
+    font-weight:400;
+
+    letter-spacing:1px;
+}
+
+.card p{
+    line-height:1.8;
+
+    color:#b9c7d3;
+}
+
+/* =========================
+   HOMEMADE
+========================= */
+
+.homemade{
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:center;
+
+    line-height:2;
+
+    color:#c7d6e2;
+
+    font-size:1.08rem;
+}
+
+/* =========================
+   MINIS SECTION
+========================= */
+
+.mini-section{
+    background:#09141d;
+
+    border-top:1px solid #163042;
+
+    border-bottom:1px solid #163042;
+}
+
+.mini-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+    margin-top:40px;
+}
+
+.mini-card{
+    padding:30px;
+
+    border-radius:18px;
+
+    background:#10202c;
+
+    border:1px solid #163042;
+
+    transition:0.25s ease;
+}
+
+.mini-card:hover{
+    transform:translateY(-6px);
+
+    border-color:#3f88c5;
+
+    box-shadow:
+    0 0 20px rgba(63,136,197,0.15);
+}
+
+.mini-card h3{
+    margin-bottom:15px;
+
+    font-weight:400;
+
+    letter-spacing:1px;
+}
+
+.mini-card p{
+    color:#b9c7d3;
+
+    line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:45px 20px;
+
+    text-align:center;
+
+    border-top:1px solid #163042;
+
+    color:#8da5b7;
+
+    letter-spacing:2px;
+
+    font-size:0.9rem;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    nav{
+        gap:20px;
+        padding:20px;
+    }
+
+    .logo{
+        font-size:3rem;
+        letter-spacing:3px;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+    <a href="#flavors">FLAVORS</a>
+    <a href="#minis">MINIS</a>
+    <a href="#homemade">HOMEMADE</a>
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header>
+
+    <div class="logo">
+        JOLLY JAM
+    </div>
+
+    <p class="tagline">
+        Handmade jams and sauces crafted in small batches
+        with bold flavor, simple ingredients, and a homemade feel.
+    </p>
+
+</header>
+
+<div class="divider"></div>
+
+<!-- =========================
+     FLAVORS
+========================= -->
+
+<section id="flavors">
+
+    <h2 class="section-title">
+        FLAVORS
+    </h2>
+
+    <div class="flavors">
+
+        <div class="card">
+
+            <h3>Blueberry Jam</h3>
+
+            <p>
+                Rich blueberry flavor with a smooth homemade texture.
+                Sweet, comforting, and crafted in small batches.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Pizza Sauce</h3>
+
+            <p>
+                Savory tomato flavor with a handcrafted finish.
+                Simple ingredients with a warm homemade feel.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     MINIS
+========================= -->
+
+<section class="mini-section" id="minis">
+
+    <h2 class="section-title">
+        JOLLY MINIS
+    </h2>
+
+    <p class="homemade">
+        Mini jars made for sampling, gifts,
+        and small servings with the same
+        handcrafted quality.
+    </p>
+
+    <div class="mini-grid">
+
+        <div class="mini-card">
+
+            <h3>Mini Blueberry</h3>
+
+            <p>
+                Portable small-batch blueberry jam
+                with the same smooth texture and flavor.
+            </p>
+
+        </div>
+
+        <div class="mini-card">
+
+            <h3>Mini Pizza Sauce</h3>
+
+            <p>
+                Compact handcrafted pizza sauce perfect
+                for tasting packs and quick meals.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     HOMEMADE
+========================= -->
+
+<section id="homemade">
+
+    <h2 class="section-title">
+        HOMEMADE
+    </h2>
+
+    <p class="homemade">
+        Jolly Jam focuses on authentic flavor and simplicity.
+        Every jar is crafted in small batches with a homemade
+        approach that keeps everything rich, real, and memorable.
+    </p>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    JOLLY JAM • HOMEMADE • SMALL BATCH
+</footer>
+
+</body>
+</html>
